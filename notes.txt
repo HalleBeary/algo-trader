@@ -1,0 +1,7 @@
+Notes
+
+Hybrid trading (technical indicators and sentiment analysis) model based on Randomforest model
+
+
+Porfolio 
+
