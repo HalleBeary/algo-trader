@@ -29,6 +29,22 @@ def calculate_technical_indicators(data):
     
     return data
 
+def calculate_technical_indicators_lstm(data):
+    # For RSI
+    delta = data['Close'].diff()
+    gain = (delta.where(delta > 0, 0)).rolling(window=14).mean()
+    loss = (-delta.where(delta < 0, 0)).rolling(window=14).mean()
+    rs = gain / loss
+    data['RSI'] = 100 - (100 / (1 + rs))
+
+    # For MACD
+    exp1 = data['Close'].ewm(span=12, adjust=False).mean()
+    exp2 = data['Close'].ewm(span=26, adjust=False).mean()
+    data['MACD'] = exp1 - exp2
+    data['Signal_Line'] = data['MACD'].ewm(span=9, adjust=False).mean()
+    
+    return data.dropna()
+
 def calculate_returns(data):
     data['Returns'] = data['Close'].pct_change()
     return data

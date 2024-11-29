@@ -5,6 +5,7 @@ from sklearn.ensemble import RandomForestClassifier
 from data_collection import get_stock_data, get_news, analyze_sentiment
 from utils import calculate_technical_indicators
 
+
 def prepare_features(data, sentiment): # Preparing data for machine learning model. RSI and MACD now used as input.
     features = data[['RSI', 'MACD', 'Signal_Line']].copy() # copy these columns into features data frame
     features['Sentiment'] = sentiment
