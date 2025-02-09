@@ -114,7 +114,7 @@ class RiskManager:
     
     def analyze_regime_characteristics(self):
             
-        feature_list = ['returns', 'drawdown' 'volatility', 'vol_of_vol', 'atr', 'adx', 'bb_width']
+        feature_list = ['returns', 'drawdown', 'volatility', 'vol_of_vol', 'atr', 'adx', 'bb_width']
         
         fig, axes = plt.subplots(2, 3, figsize=(15, 10))
         axes = axes.ravel()  # Flatten the 2D array of axes
